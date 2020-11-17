@@ -1,0 +1,107 @@
+<html> <link rel="stylesheet" type="text/css" href="index.css">
+<div id=mainflow>
+  <div id=topbar>Weather Dashboard</div>
+  <div id=cities>
+    <ul>
+      <li>Austin</li>
+      <li>Chicago</li>
+      <li>New York</li>
+    </ul>
+  </div>
+
+  <div id=panel>
+    <div id=weather>
+      <h1 id=city></h1>
+
+      <span>Tempreture:</span><span id=temp></span><br/>
+      <span>Humidity</span><span id=humidity></span><br/>
+      <span>Wind Speed</span><span id=windspeed></span><br/>
+      <span>UV index</span><span id=uvindex>9.49</span><br/>
+    </div>
+    <div id=forecast>
+     <div id=f0 class=forecast>
+       <span id=date></span>
+      <span>Tempreture:</span><span id=temp></span><br/>
+      <span>Humidity</span><span id=humidity></span><br/>
+     </div> 
+     <div id=f1 class=forecast>
+      <span id=date></span>
+     <span>Tempreture:</span><span id=temp></span><br/>
+     <span>Humidity</span><span id=humidity></span><br/>
+    </div> 
+    <div id=f2 class=forecast>
+      <span id=date></span>
+     <span>Tempreture:</span><span id=temp></span><br/>
+     <span>Humidity</span><span id=humidity></span><br/>
+    </div> 
+    <div id=f3 class=forecast>
+      <span id=date></span>
+     <span>Tempreture:</span><span id=temp></span><br/>
+     <span>Humidity</span><span id=humidity></span><br/>
+    </div> 
+    <div id=f4 class=forecast>
+      <span id=date></span>
+     <span>Tempreture:</span><span id=temp></span><br/>
+     <span>Humidity</span><span id=humidity></span><br/>
+    </div>  
+      
+    
+    </div>
+  </div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    var key="2dcf0a8ff1b112b62f4df9c61201027f";
+    $("#cities li").on("click",function(e){
+      var city=e.target.textContent
+     var queryURL ="https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+key;
+     $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        var lat=response.coord.lat
+        var lon=response.coord.lon
+      var queryURL ="https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=hourly,minutely&appid="+key;
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response)
+        console.log(response.daily[0].dt)
+        for(var i=0;i<5;i++){
+          let f=response.daily[i]
+          var date = new Date(f.dt * 1000);
+          console.log (date)
+          var humidity=f.humidity
+          var temp=f.temp.day 
+          $("#forecast>#f"+i+">#date").html(date)
+          $("#forecast>#f"+i+">#humidity").html(humidity)
+          $("#forecast>#f"+i+">#temp").html(temp)
+        }
+        
+        
+        $("#city").html(city)
+        //$("#weather").html(response.weather[0].main+" "+response.weather[0].description)
+        $("#windspeed").html(response.current.wind_speed)
+        $("#temp").html(response.current.temp)
+        $("#humidity").html(response.current.humidity)
+        $("#uvindex").html(response.current.uvi)
+  
+      }); 
+    })})
+      
+      
+      
+     
+  
+      // Repeat the above logic to add rows for two more movies of your choice
+  
+      // BONUS: Once complete, try to make your code as DRY as possible through the use of functions
+    </script>
+
+
+
+
+
+
+    </html>

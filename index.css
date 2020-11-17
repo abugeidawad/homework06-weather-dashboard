@@ -1,0 +1,31 @@
+#mainflow{
+    display:flex;
+    flex-wrap:wrap;
+}
+#topbar{
+    flex-basis:100%;
+    background-color: grey;
+    color: white;
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+}
+#cities{
+    flex-basis:30%;
+}
+#panel{
+    flex-basis:70%;
+}
+#panel>#uvindex{
+    background-color: red;
+    font-weight: bold;
+}
+#forecast{
+    display:flex;
+}
+.forecast{
+    flex-basis: 20%;
+  background-color: rgb(105, 129, 240);  
+  margin-right: 20px;
+  width: 150px;
+}
