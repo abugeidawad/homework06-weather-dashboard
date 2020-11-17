@@ -20,27 +20,27 @@
     </div>
     <div id=forecast>
      <div id=f0 class=forecast>
-       <span id=date></span>
+       <h1 id=date></h1>
       <span>Tempreture:</span><span id=temp></span><br/>
       <span>Humidity</span><span id=humidity></span><br/>
      </div> 
      <div id=f1 class=forecast>
-      <span id=date></span>
+      <h1 id=date></h1>
      <span>Tempreture:</span><span id=temp></span><br/>
      <span>Humidity</span><span id=humidity></span><br/>
     </div> 
     <div id=f2 class=forecast>
-      <span id=date></span>
+      <h1 id=date></h1>
      <span>Tempreture:</span><span id=temp></span><br/>
      <span>Humidity</span><span id=humidity></span><br/>
     </div> 
     <div id=f3 class=forecast>
-      <span id=date></span>
+      <h1 id=date></h1>
      <span>Tempreture:</span><span id=temp></span><br/>
      <span>Humidity</span><span id=humidity></span><br/>
     </div> 
     <div id=f4 class=forecast>
-      <span id=date></span>
+      <h1 id=date></h1>
      <span>Tempreture:</span><span id=temp></span><br/>
      <span>Humidity</span><span id=humidity></span><br/>
     </div>  
@@ -72,13 +72,14 @@
           let f=response.daily[i]
           var date = new Date(f.dt * 1000);
           console.log (date)
+          var fdate= date.getDay()+"/"+date.getMonth()+"/"+date.getFullYear()
           var humidity=f.humidity
           var temp=f.temp.day 
-          $("#forecast>#f"+i+">#date").html(date)
+          $("#forecast>#f"+i+">#date").html(fdate)
           $("#forecast>#f"+i+">#humidity").html(humidity)
           $("#forecast>#f"+i+">#temp").html(temp)
         }
-        
+  
         
         $("#city").html(city)
         //$("#weather").html(response.weather[0].main+" "+response.weather[0].description)
