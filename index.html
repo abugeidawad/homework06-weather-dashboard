@@ -21,26 +21,36 @@
     <div id=forecast>
      <div id=f0 class=forecast>
        <h1 id=date></h1>
+      
+       <img id=icon></img><br/>
       <span>Tempreture:</span><span id=temp></span><br/>
       <span>Humidity</span><span id=humidity></span><br/>
      </div> 
      <div id=f1 class=forecast>
       <h1 id=date></h1>
+      
+      <img id=icon></img><br/>
      <span>Tempreture:</span><span id=temp></span><br/>
      <span>Humidity</span><span id=humidity></span><br/>
     </div> 
     <div id=f2 class=forecast>
       <h1 id=date></h1>
+      
+      <img id=icon></img><br/>
      <span>Tempreture:</span><span id=temp></span><br/>
      <span>Humidity</span><span id=humidity></span><br/>
     </div> 
     <div id=f3 class=forecast>
       <h1 id=date></h1>
+      
+      <img id=icon></img><br/>
      <span>Tempreture:</span><span id=temp></span><br/>
      <span>Humidity</span><span id=humidity></span><br/>
     </div> 
     <div id=f4 class=forecast>
       <h1 id=date></h1>
+      
+      <img id=icon></img><br/>
      <span>Tempreture:</span><span id=temp></span><br/>
      <span>Humidity</span><span id=humidity></span><br/>
     </div>  
@@ -75,9 +85,14 @@
           var fdate= date.getDay()+"/"+date.getMonth()+"/"+date.getFullYear()
           var humidity=f.humidity
           var temp=f.temp.day 
+          var weather=f.weather[0].main+"-"+f.weather[0].description
+          var icon="http://openweathermap.org/img/wn/"+f.weather[0].icon+"@2x.png"
           $("#forecast>#f"+i+">#date").html(fdate)
           $("#forecast>#f"+i+">#humidity").html(humidity)
+      
           $("#forecast>#f"+i+">#temp").html(temp)
+          $("#forecast>#f"+i+">#icon").attr("src",icon)
+          $("#forecast>#f"+i+">#icon").attr("width",30)
         }
   
         
